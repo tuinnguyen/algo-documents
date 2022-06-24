@@ -130,7 +130,7 @@ Từ định lý trên, mấu chốt để giải một bài toán áp dụng th
 5. Đảm bảo không gian tìm kiếm đủ rộng để xác định đúng kết quả.
 6. Luôn kiểm tra trường hợp $P(S) = [false, true]$. Để hiểu lí do hãy đọc đến trường hợp $2$ của cài đặt.
 
-***Trường hợp $1$:*** tìm $x$ nhỏ nhất mà $P(S) = true$. Dưới đây là code mẫu viết bằng C++.
+***Trường hợp thứ nhất:*** tìm $x$ nhỏ nhất mà $P(S) = true$. Dưới đây là code mẫu viết bằng C++.
 
 ```c++
 bool P(int x) {
@@ -155,9 +155,9 @@ int binary_search(int left, int right) {
 
 Khi $P(mid) = true$, ta có thể bỏ nửa sau của không gian tìm kiếm vì đã biết phần tử trong đó luôn hợp lệ. Tuy nhiên ta vẫn phải giữ $mid$ trong không gian tìm kiếm mới vì nó có thể là phần tử đầu tiên mà $P = true$. Do đó không gian tìm kiếm mới sẽ là $S = [left, mid]$.
 
-Tương tự, khi $P(mid) = false$, ta có thể bỏ nửa đầu (bao gồm cả phần tử $mid$) vì tất cả các phần tử này đều không hợp lệ. Lúc này không gian tìm kiếm mới sẽ là $S = mid + 1, right$.
+Tương tự, khi $P(mid) = false$, ta có thể bỏ nửa đầu (bao gồm cả phần tử $mid$) vì tất cả các phần tử này đều không hợp lệ. Lúc này không gian tìm kiếm mới sẽ là $S = [mid + 1, right]$.
 
-***Trường hợp $2$:*** Tìm $x$ lớn nhất mà $P(x) = false$, suy luận tương tự như trên, ta có đoạn code sau:
+***Trường hợp thứ hai:*** Tìm $x$ lớn nhất mà $P(x) = false$, suy luận tương tự như trên, ta có đoạn code sau:
 
 ```c++
 bool P(int x) {
@@ -182,9 +182,9 @@ int binary_search(int left, int right) {
 
 Trong quá trình tìm kiếm, nếu tại một thời điểm nào đó mà dãy $P(S)$ tạo ra bởi các phần tử của không gian tìm kiếm dạng như sau:
 $$[false, true]$$
-Nếu ta tính $mid = left + (right - left) / 2$ thì đoạn code sẽ lặp vô hạn. Nó sẽ luôn chọn phần tử trung vị là $mid = left$, nhưng cận dưới $left$ sẽ không di chuyển vì nó muốn giữ lại phần tử có $p = false$ thỏa yêu cầu tìm kiếm đó. Do đó, ta thay đổi công thức tình $mid$ thành $mid = left + (right - left + 1) / 2$, làm như vậy sẽ khiến cận dưới sẽ được làm tròn lên thay vì làm tròn xuống, khi đó nó có thể loại bỏ phần tử $true$ trước khi xét phần tử $false$.
+Nếu ta tính $mid = left + \dfrac{1}{2}(right - left)$ thì đoạn code sẽ lặp vô hạn. Nó sẽ luôn chọn phần tử trung vị là $mid = left$, nhưng cận dưới $left$ sẽ không di chuyển vì nó muốn giữ lại phần tử có $p = false$ thỏa yêu cầu tìm kiếm đó. Do đó, ta thay đổi công thức tình $mid$ thành $mid = left + \dfrac{1}{2}(right - left + 1)$, làm như vậy sẽ khiến cận dưới sẽ được làm tròn lên thay vì làm tròn xuống, khi đó nó có thể loại bỏ phần tử $true$ trước khi xét phần tử $false$.
 
-Nếu bạn thắc mắc vì sao ta tính $mid = left + (right - left) / 2$ thay vì $mid = (right + left) / 2$. Ta làm vậy là để tránh khả năng xảy ra lỗi làm tròn số nguyên, ta muốn phép chia được làm tròn xuống, về gần với cận dưới, tuy nhiên phép chia làm tròn khác khi có số âm, nên nếu $(left + right)$ là số am thì kết quả sẽ bị làm tròn lên.
+Nếu bạn thắc mắc vì sao ta tính $mid = left + \dfrac{1}{2}(right - left)$ thay vì $mid = \dfrac{1}{2}(right + left)$. Ta làm vậy là để tránh khả năng xảy ra lỗi làm tròn số nguyên, ta muốn phép chia được làm tròn xuống, về gần với cận dưới, tuy nhiên phép chia làm tròn khác khi có số âm, nên nếu $(left + right)$ là số am thì kết quả sẽ bị làm tròn lên.
 
 ## Nguồn và tài liệu tham khảo {#7}
 
