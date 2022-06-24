@@ -25,7 +25,7 @@ Trả về vị trí của phần tử có giá trị $x$ trong dãy $A$.
 ***Ví dụ:***
 Ta xét mảng $A = [11, 15, 19, 31, 37, 41, 51, 65, 69, 72, 78]$ và $x = 51$, thuật toán sẽ diễn ra như hình mô tả bên dưới.
 
-![Ảnh mô tả ví dụ](/documents/images/Binary-search-01.png)
+![Ảnh mô tả ví dụ](images/Binary-search-01.png)
 
 **Cụ thể:**
 
@@ -114,7 +114,7 @@ Nếu ta tính giá trị $P(x)$ cho từng phần tử trong $S$ ban đầu, ta
 
 > Với bài toán mới, ta có: $P(x) = boolean(A[x] \ge 51)$. Dễ thấy, $P$ thỏa mãn tính chất đầu tiên. Vì dãy $A$ được sắp xếp tăng dần nên nếu $A[x] \ge 51$ thì chắc chắn các phần tử $y > x$ đều thỏa $A[y] \ge A[x] \ge 51$. Tương tự, ta cũng suy ra được nếu $A[x] < 51$ thì chắc chắn các phần tử $y < x$ đều thỏa $A[y] \le A[x] \le 51$. Áp dụng hàm $P(x) = boolean(A[x] \ge 51)$ cho từng phần tử của $S = [0, 1, 2, \dots, 10]$ ta có hình dưới đây:
 
-![Ảnh mô tả](/documents/images/Binary-search-02.png)
+![Ảnh mô tả](images/Binary-search-02.png)
 
 **Chú ý:** Ta cũng có thể xây dựng hàm $P$ ngược lại theo cách tương tự.
 
