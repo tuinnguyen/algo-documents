@@ -188,4 +188,4 @@ Nếu bạn thắc mắc vì sao ta tính $mid = left + (right - left) / 2$ thay
 
 ## Nguồn và tài liệu tham khảo {#7}
 
-1. [Binary Search Algorithm | VNOI](https://vnoi.info/wiki/algo/basic/binary-search.md#mjx-eqn-eq%3A2).
+1. [Nguồn: Binary Search Algorithm | VNOI](https://vnoi.info/wiki/algo/basic/binary-search.md#mjx-eqn-eq%3A2).
